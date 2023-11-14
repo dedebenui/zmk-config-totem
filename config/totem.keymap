@@ -23,7 +23,6 @@
 #define TVP1 4
 #define TVP2 5
 
-
 &mt {
     quick-tap-ms = <100>;
     global-quick-tap;
@@ -47,77 +46,44 @@
 
     keymap {
         compatible = "zmk,keymap";
+
         base_layer {
             label = "BASE";
             bindings = <
-//              ┌────────────┬────────────┬─────────────┬─────────────┬───────────┐                           ┌───────────────┬─────────────┬─────────────┬────────────┬──────────────────┐                   
-//              │   &kp Q    │   &kp W    │    &kp F    │    &kp P    │   &kp G   │                           │     &kp J     │    &kp L    │    &kp U    │   &kp Y    │ &kp LEFT_BRACKET │                   
-//              ├────────────┼────────────┼─────────────┼─────────────┼───────────┤                           ├───────────────┼─────────────┼─────────────┼────────────┼──────────────────┤                   
-//              │ &mt LGUI A │ &mt LALT R │ &mt LCTRL S │ &mt LSHFT T │   &kp D   │                           │     &kp H     │ &mt RSHFT N │ &mt RCTRL E │ &mt RALT I │    &mt RGUI O    │                   
-//    ┌─────────┼────────────┼────────────┼─────────────┼─────────────┼───────────┤                           ├───────────────┼─────────────┼─────────────┼────────────┼──────────────────┼──────────────────┐
-//    │ &kp TAB │   &kp Z    │   &kp X    │    &kp C    │    &kp V    │   &kp B   │                           │     &kp K     │    &kp M    │  &kp COMMA  │  &kp DOT   │  &kp SEMICOLON   │ &kp SINGLE_QUOTE │
-//    └─────────┴────────────┴────────────┴─────────────┼─────────────┼───────────┼───────────┐   ┌───────────┼───────────────┼─────────────┼─────────────┴────────────┴──────────────────┴──────────────────┘
-//                                                      │    &mo 1    │ &kp SPACE │ &kp ENTER │   │ &kp MINUS │ &kp BACKSPACE │    &mo 2    │                                                                 
-//                                                      └─────────────┴───────────┴───────────┘   └───────────┴───────────────┴─────────────┘                                                                 
-            &kp Q        &kp W        &kp F         &kp P         &kp G                                   &kp J           &kp L         &kp U         &kp Y        &kp LEFT_BRACKET                   
-            &mt LGUI A   &mt LALT R   &mt LCTRL S   &mt LSHFT T   &kp D                                   &kp H           &mt RSHFT N   &mt RCTRL E   &mt RALT I   &mt RGUI O                         
-  &kp TAB   &kp Z        &kp X        &kp C         &kp V         &kp B                                   &kp K           &kp M         &kp COMMA     &kp DOT      &kp SEMICOLON      &kp SINGLE_QUOTE
-                                                    &mo 1         &kp SPACE   &kp ENTER       &kp MINUS   &kp BACKSPACE   &mo 2                                                                       
+         &kp Q       &kp W       &kp F        &kp P        &kp G        &kp J      &kp L          &kp U        &kp Y       &kp FR_E_GRAVE
+         &mt LGUI A  &mt LALT R  &mt LCTRL S  &mt LSHFT T  &kp D        &kp H      &mt RSHFT N    &mt RCTRL E  &mt RALT I  &mt RGUI O
+&kp TAB  &kp Z       &kp X       &kp C        &kp V        &kp B        &kp K      &kp M          &kp COMMA    &kp DOT     &kp FR_E_ACUTE  &kp FR_A_GRAVE
+                                 &mo 1        &kp SPACE    &kp ENTER    &kp MINUS  &kp BACKSPACE  &mo 2
             >;
         };
+
         lower_layer {
             label = "LOWER";
             bindings = <
-//             ┌─────────┬─────────────┬──────────────┬───────────────┬────────────┐                     ┌──────────────────────┬───────────────────────┬───────────────────────┬─────────────────┬──────────────────────┐         
-//             │ &kp ESC │   &kp N7    │    &kp N8    │    &kp N9     │ &kp MINUS  │                     │ &kp RA(SINGLE_QUOTE) │   &kp RA(BACKSLASH)   │ &kp LS(RIGHT_BRACKET) │   &kp LS(N3)    │    &kp LESS_THAN     │         
-//             ├─────────┼─────────────┼──────────────┼───────────────┼────────────┤                     ├──────────────────────┼───────────────────────┼───────────────────────┼─────────────────┼──────────────────────┤         
-//             │  &kp E  │ &mt LALT N4 │ &mt LCTRL N5 │ &mt LSHIFT N6 │ &kp LS(N2) │                     │      &kp LS(N8)      │   &mt RSHIFT LS(N9)   │  &mt LCTRL LS(MINUS)  │ &mt RALT LS(N7) │ &mt RIGHT_GUI LS(N0) │         
-//    ┌────────┼─────────┼─────────────┼──────────────┼───────────────┼────────────┤                     ├──────────────────────┼───────────────────────┼───────────────────────┼─────────────────┼──────────────────────┼────────┐
-//    │ &trans │ &kp N0  │   &kp N1    │    &kp N2    │    &kp N3     │  &kp LPAR  │                     │ &kp RA(LEFT_BRACKET) │ &kp RA(RIGHT_BRACKET) │     &kp BACKSLASH     │   &kp LS(N1)    │   &kp GREATER_THAN   │ &trans │
-//    └────────┴─────────┴─────────────┴──────────────┼───────────────┼────────────┼────────┐   ┌────────┼──────────────────────┼───────────────────────┼───────────────────────┴─────────────────┴──────────────────────┴────────┘
-//                                                    │    &trans     │   &trans   │ &trans │   │ &trans │        &trans        │        &trans         │                                                                          
-//                                                    └───────────────┴────────────┴────────┘   └────────┴──────────────────────┴───────────────────────┘                                                                          
-           &kp ESC   &kp N7        &kp N8         &kp N9          &kp MINUS                          &kp RA(SINGLE_QUOTE)   &kp RA(BACKSLASH)       &kp LS(RIGHT_BRACKET)   &kp LS(N3)        &kp LESS_THAN                
-           &kp E     &mt LALT N4   &mt LCTRL N5   &mt LSHIFT N6   &kp LS(N2)                         &kp LS(N8)             &mt RSHIFT LS(N9)       &mt LCTRL LS(MINUS)     &mt RALT LS(N7)   &mt RIGHT_GUI LS(N0)         
-  &trans   &kp N0    &kp N1        &kp N2         &kp N3          &kp LPAR                           &kp RA(LEFT_BRACKET)   &kp RA(RIGHT_BRACKET)   &kp BACKSLASH           &kp LS(N1)        &kp GREATER_THAN       &trans
-                                                  &trans          &trans       &trans       &trans   &trans                 &trans                                                                                         
+        &kp ESC  &kp N7       &kp N8        &kp N9         &kp FR_SINGLE_QUOTE         &kp FR_LEFT_BRACE            &kp FR_RIGHT_BRACE                   &kp LS(FR_QUESTION)       &kp FR_ASTERISK        &kp FR_LESS_THAN
+        &kp E    &mt LALT N4  &mt LCTRL N5  &mt LSHIFT N6  &kp LS(FR_DOUBLE_QUOTES)    &kp LS(FR_LEFT_PARENTHESIS)  &mt RSHIFT LS(FR_RIGHT_PARENTHESIS)  &mt LCTRL FR_EXCLAMATION  &mt RALT LS(FR_SLASH)  &mt RIGHT_GUI LS(FR_EQUAL)
+&trans  &kp N0   &kp N1       &kp N2        &kp N3         &kp FR_CARET                &kp RA(FR_LEFT_BRACKET)      &kp RA(FR_RIGHT_BRACKET)             &trans                    &kp LS(FR_PLUS)        &kp FR_GREATER_THAN         &kp FR_PLUS
+                              &trans        &trans         &trans                      &trans                       &trans                               &trans
             >;
         };
 
         raise_layer {
             label = "RAISE";
             bindings = <
-//             ┌─────────────┬─────────────┬───────────┬──────────┬───────────┐                    ┌──────────────┬────────────────┬────────────┬────────────┬───────────┐         
-//             │  &kp EXCL   │   &kp AT    │ &kp HASH  │ &kp DLLR │ &kp PRCNT │                    │  &kp CARET   │    &kp AMPS    │ &kp RA(U)  │  &kp SQT   │  &kp DQT  │         
-//             ├─────────────┼─────────────┼───────────┼──────────┼───────────┤                    ├──────────────┼────────────────┼────────────┼────────────┼───────────┤         
-//             │  &kp RA(A)  │   &trans    │ &kp RA(S) │  &trans  │  &trans   │                    │  &kp C_MUTE  │ &kp LS(RA(N4)) │ &kp RA(N5) │ &kp RA(N4) │ &kp RA(O) │         
-//    ┌────────┼─────────────┼─────────────┼───────────┼──────────┼───────────┤                    ├──────────────┼────────────────┼────────────┼────────────┼───────────┼────────┐
-//    │ &trans │ &kp RA(F18) │ &kp RA(F19) │  &trans   │  &trans  │  &trans   │                    │ &kp C_VOL_DN │  &kp C_VOL_UP  │ &kp C_PREV │ &kp C_NEXT │ &kp BSLH  │ &trans │
-//    └────────┴─────────────┴─────────────┴───────────┼──────────┼───────────┼───────┐   ┌────────┼──────────────┼────────────────┼────────────┴────────────┴───────────┴────────┘
-//                                                     │  &trans  │  &trans   │ &mo 3 │   │ &trans │   &kp C_PP   │     &trans     │                                               
-//                                                     └──────────┴───────────┴───────┘   └────────┴──────────────┴────────────────┘                                               
-           &kp EXCL      &kp AT        &kp HASH    &kp DLLR   &kp PRCNT                        &kp CARET      &kp AMPS         &kp RA(U)    &kp SQT      &kp DQT           
-           &kp RA(A)     &trans        &kp RA(S)   &trans     &trans                           &kp C_MUTE     &kp LS(RA(N4))   &kp RA(N5)   &kp RA(N4)   &kp RA(O)         
-  &trans   &kp RA(F18)   &kp RA(F19)   &trans      &trans     &trans                           &kp C_VOL_DN   &kp C_VOL_UP     &kp C_PREV   &kp C_NEXT   &kp BSLH    &trans
-                                                   &trans     &trans      &mo 3       &trans   &kp C_PP       &trans                                                       
+               &kp FR_UMLAUT      &kp FR_POUND           &kp FR_AT_SIGN      &kp FR_DOLLAR        &kp PRCNT       &kp CARET     &kp AMPS        &kp RA(U)   &kp SQT     &kp DQT
+               &mt LGUI FR_TILDE  &mt LALT FR_BACKSLASH  &mt LCTRL FR_GRAVE  &mt LSHIFT FR_ACUTE  &kp FR_CARET    &kp C_MUTE    &kp LS(RA(N4))  &kp RA(N5)  &kp RA(N4)  &kp RA(O)
+&kp FR_DEGREE  &kp FR_AMPERSAND   &kp RA(FR_PIPE)        &kp FR_C_CEDILLA    &kp FR_PERCENT       &trans          &kp C_VOL_DN  &kp C_VOL_UP    &kp C_PREV  &kp C_NEXT  &kp BSLH   &trans
+                                                         &trans              &trans               &trans          &trans        &trans          &trans
             >;
         };
+
         adjust_layer {
             label = "ADJ";
             bindings = <
-//             ┌─────────────┬────────────┬──────────────┬────────┬────────┐                     ┌────────┬────────┬────────┬────────┬─────────┐         
-//             │ &sys_reset  │ &bt BT_CLR │ &out OUT_TOG │ &trans │ &trans │                     │ &trans │ &kp F7 │ &kp F8 │ &kp F9 │ &kp F12 │         
-//             ├─────────────┼────────────┼──────────────┼────────┼────────┤                     ├────────┼────────┼────────┼────────┼─────────┤         
-//             │ &bootloader │ &bt BT_NXT │    &trans    │ &trans │ &trans │                     │ &trans │ &kp F4 │ &kp F5 │ &kp F6 │ &kp F11 │         
-//    ┌────────┼─────────────┼────────────┼──────────────┼────────┼────────┤                     ├────────┼────────┼────────┼────────┼─────────┼────────┐
-//    │ &trans │   &trans    │ &bt BT_PRV │    &trans    │ &trans │ &trans │                     │ &trans │ &kp F1 │ &kp F2 │ &kp F3 │ &kp F10 │ &trans │
-//    └────────┴─────────────┴────────────┴──────────────┼────────┼────────┼────────┐   ┌────────┼────────┼────────┼────────┴────────┴─────────┴────────┘
-//                                                       │ &trans │ &trans │ &trans │   │ &trans │ &trans │ &trans │                                     
-//                                                       └────────┴────────┴────────┘   └────────┴────────┴────────┘                                     
-           &sys_reset    &bt BT_CLR   &out OUT_TOG   &trans   &trans                         &trans   &kp F7   &kp F8   &kp F9   &kp F12         
-           &bootloader   &bt BT_NXT   &trans         &trans   &trans                         &trans   &kp F4   &kp F5   &kp F6   &kp F11         
-  &trans   &trans        &bt BT_PRV   &trans         &trans   &trans                         &trans   &kp F1   &kp F2   &kp F3   &kp F10   &trans
-                                                     &trans   &trans   &trans       &trans   &trans   &trans                                     
+        &sys_reset   &bt BT_CLR  &out OUT_TOG  &trans  &trans    &trans  &kp F7  &kp F8  &kp F9  &kp F12
+        &bootloader  &bt BT_NXT  &trans        &trans  &trans    &trans  &kp F4  &kp F5  &kp F6  &kp F11
+&trans  &trans       &bt BT_PRV  &trans        &trans  &trans    &trans  &kp F1  &kp F2  &kp F3  &kp F10  &trans
+                                 &trans        &trans  &trans    &trans  &trans  &trans
             >;
         };
     };
